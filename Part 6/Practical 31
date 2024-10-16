@@ -1,0 +1,62 @@
+import java.io.*;
+public class p31
+{
+    public static void main(String[] args)
+    {
+        String charSourceFile = "file3.txt";
+        String charDestFile = "file7.txt";
+
+        try (FileReader fr = new FileReader(charSourceFile);
+             FileWriter fw = new FileWriter(charDestFile))
+        {
+            int c;
+            System.out.println("Copying data using Character Stream...");
+            while ((c = fr.read()) != -1)
+            {
+                fw.write(c);
+            }
+                System.out.println("Character Stream Copy Completed.");
+            }
+        catch (IOException e)
+        {
+            System.out.println("Error using Character Stream: " + e.getMessage());
+        }
+        String byteSourceFile = "file4.txt";
+        String byteDestFile = "file8.txt";
+
+        try (FileInputStream fis = new FileInputStream(byteSourceFile);
+             FileOutputStream fos = new FileOutputStream(byteDestFile))
+        {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+
+            System.out.println("Copying data using Byte Stream...");
+            while ((bytesRead = fis.read(buffer)) != -1)
+            {
+                fos.write(buffer, 0, bytesRead);
+            }
+            System.out.println("Byte Stream Copy Completed.");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error using Byte Stream: " + e.getMessage());
+        }
+        String consoleOutputFile = "file6.txt";
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+             BufferedWriter bw = new BufferedWriter(new FileWriter(consoleOutputFile)))
+        {
+            System.out.println("Enter lines of text (type 'exit' to stop):");
+            String line;
+            while (!(line = br.readLine()).equalsIgnoreCase("exit"))
+            {
+                bw.write(line);
+                bw.newLine();
+            }
+            System.out.println("Console input has been written to " + consoleOutputFile);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error during console input/output: " + e.getMessage());
+        }
+    }
+}
