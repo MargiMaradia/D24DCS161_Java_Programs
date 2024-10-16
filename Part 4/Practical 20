@@ -1,0 +1,38 @@
+public class p20
+{
+    public static void main(String[] args)
+    {
+        Square1 s1 = new Square1();
+        s1.print();
+    }
+}
+class Shape
+{
+    void print()
+    {
+        System.out.println("This is Shape");
+    }
+}
+class Rectangle1 extends Shape
+{
+    void print()
+    {
+        super.print();
+        System.out.println("This is Rectangle shape ");
+    }
+}
+class Circle extends Shape
+{
+    void print()
+    {
+        System.out.println("This is circle shape");
+    }
+}
+class Square1 extends Rectangle1
+{
+    void print()
+    {
+        super.print();
+        System.out.println("Square is Rectangle");
+    }
+}
