@@ -1,0 +1,33 @@
+public class p21
+{
+    public static void main(String s[])
+    {
+        Degree d1 = new Degree();
+        d1.getDegree();
+        UnderGraduate ug1 = new UnderGraduate();
+        ug1.getDegree1();
+        PostGraduate pg1 = new PostGraduate();
+        pg1.getDegree1();
+    }
+}
+class Degree
+{
+    void getDegree()
+    {
+        System.out.println("I got a Degree");
+    }
+}
+class UnderGraduate extends Degree
+{
+    void getDegree1()
+    {
+        System.out.println("I am an Undergraduate");
+    }
+}
+class PostGraduate extends Degree
+{
+    void getDegree1()
+    {
+        System.out.println("I am a Post-graduate ");
+    }
+}
