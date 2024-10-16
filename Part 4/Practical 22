@@ -1,0 +1,37 @@
+import java.util.*;
+public class p22
+{
+    public static void main(String s[])
+    {
+        Scanner sc = new Scanner(System.in);
+        myCalculator c1 = new myCalculator();
+        System.out.print("Enter the number for divisor: ");
+        int n = sc.nextInt();
+        System.out.println("The Divisor is : " + n);
+        System.out.println("sum of divisor : "+ c1.divisor_sum(n));
+    }
+
+}
+interface AdvancedArithmetic
+{
+        int divisor_sum(int n);
+}
+class myCalculator implements AdvancedArithmetic
+{
+    @Override
+    public int divisor_sum(int n)
+    {
+        int sum = 0;
+        System.out.println("Divisors of " +n+" are: ");
+        for(int i = 1; i<=n; i++)
+        {
+            if (n % i == 0)
+            {
+                System.out.print(i + " ");
+                sum += i;
+            }
+        }
+        System.out.println();
+        return sum;
+    }
+}
