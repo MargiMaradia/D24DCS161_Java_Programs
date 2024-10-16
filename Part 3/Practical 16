@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class p16
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        float r1,r2,i1,i2;
+
+        System.out.print("Enter the one Real number : ");
+        r1 = sc.nextFloat();
+        System.out.print("Enter the  one Imaginary number : ");
+        i1 = sc.nextFloat();
+
+        System.out.print("Enter the second Real number : ");
+        r2 = sc.nextFloat();
+        System.out.print("Enter the second Imaginary number : ");
+        i2 = sc.nextFloat();
+
+        Complex c1 = new Complex();
+        c1.Sum(r1,r2,i1,i2);
+        c1.difference(r1,r2,i1,i2);
+        c1.product(r1,r2,i1,i2);
+    }
+}
+class Complex
+{
+    void Sum( float real_no1 , float real_no2, float imaginary_no1,float imaginary_no2)
+    {
+        float sum1,sum2;
+        sum1 = real_no1 + imaginary_no1;
+        sum2 = real_no2 + imaginary_no2;
+        System.out.println(" Sum of Complex number : "+ sum1 + " + " + sum2 + "i");
+    }
+    void difference(float real_no1 , float real_no2, float imaginary_no1,float imaginary_no2)
+    {
+        float diff1,diff2;
+        diff1 = real_no1 - imaginary_no1;
+        diff2 = real_no2 - imaginary_no2;
+        System.out.println(" Difference of Complex number : "+ diff1 + " - " + diff2 + "i");
+
+    }
+    void product(float real_no1 , float real_no2, float imaginary_no1,float imaginary_no2)
+    {
+        float product1,product2 ;
+        product1 = real_no1 * imaginary_no1;
+        product2 = real_no2 * imaginary_no2;
+        System.out.println(" Product of Complex number : "+product1 + " * " + product2 + "i");
+    }
+}
