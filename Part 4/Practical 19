@@ -1,0 +1,58 @@
+public class p19
+{
+    public static void main(String[] args)
+    {
+
+                Rectangle[] rectangles = new Rectangle[3];
+
+                rectangles[0] = new Rectangle(4, 7);
+                rectangles[1] = new Square(9);
+                rectangles[2] = new Rectangle(3, 6);
+
+                for (Rectangle rectangle : rectangles)
+                {
+                    rectangle.printArea();
+                    rectangle.printPerimeter();
+                    System.out.println();
+                }
+    }
+}
+class Rectangle
+{
+    double len, bre;
+    Rectangle(double le,double br)
+    {
+        this.len = le;
+        this.bre = br;
+    }
+    void printArea()
+    {
+        double area;
+        area = len * bre;
+        System.out.println("Area of rectangle : "+area);
+    }
+    void printPerimeter()
+    {
+        double perimeter;
+        perimeter = 2*(len + bre);
+        System.out.println("Perimeter of Rectangle : "+perimeter);
+    }
+}
+class Square extends Rectangle
+{
+    Square(double side)
+    {
+        super(side, side);
+    }
+    @Override
+    public void printArea() {
+        double area = super.len * super.len;
+        System.out.println("Area of Square : " + area);
+    }
+
+    @Override
+    public void printPerimeter() {
+        double perimeter = 4 * super.len;
+        System.out.println("Perimeter of Square : " + perimeter);
+    }
+}
