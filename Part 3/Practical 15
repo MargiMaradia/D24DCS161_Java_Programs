@@ -1,0 +1,31 @@
+import java.util.*;
+public class p15
+{
+    public static void main(String[] args)
+    {
+        float l,b;
+        Scanner sc = new Scanner(System.in);
+        System.out.print(" Enter the Length of Area : ");
+        l = sc.nextFloat();
+        System.out.print(" Enter the breadth of Area : ");
+        b = sc.nextFloat();
+        Area a1 = new Area(l,b);
+        a1.returnArea();
+    }
+}
+class Area
+{
+    float l,b;
+    Area(float length, float breadth)
+    {
+        this.l = length;
+        this.b = breadth;
+    }
+        void returnArea()
+        {
+            float area;
+            area = l* b;
+            System.out.println(" Area of a Rectangle : " + area);
+        }
+
+}
