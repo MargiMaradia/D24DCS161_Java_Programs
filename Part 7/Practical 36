@@ -1,0 +1,29 @@
+class thread5 extends Thread
+{
+        thread5(String name)
+        {
+            super(name);
+        }
+
+        public void run()
+        {
+            System.out.println(Thread.currentThread().getName() + " is running with priority: " + Thread.currentThread().getPriority());
+        }
+}
+public class p36
+{
+    public static void main(String[] args)
+    {
+
+        thread5 t1 = new thread5("FIRST");
+        thread5 t2 = new thread5("SECOND");
+        thread5 t3 = new thread5("THIRD");
+
+        t1.setPriority(3);
+        t3.setPriority(7);
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
