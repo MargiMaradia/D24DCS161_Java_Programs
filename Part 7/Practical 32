@@ -1,0 +1,28 @@
+public class p32
+{
+    public static void main(String[] args)
+    {
+        A1 a = new A1();
+        a.start();
+
+        B1 b = new B1();
+        Thread t1 = new Thread(b);
+        t1.start();
+    }
+}
+class A1 extends Thread
+{
+    @Override
+    public void run()
+    {
+        System.out.println("Hello World from Thread class");
+    }
+}
+class B1 implements Runnable
+{
+    @Override
+    public void run()
+    {
+        System.out.println("Hello World from Runnable interface");
+    }
+}
