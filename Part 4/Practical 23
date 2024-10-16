@@ -1,0 +1,98 @@
+public class p23
+{
+    public static void main(String[] args) {
+
+        Circle2 circle = new Circle2(5.0, "Red");
+        Rectangle2 rectangle = new Rectangle2(4.0, 6.0, "Yellow");
+
+
+        Sign circleSign = new Sign(circle, "Welcome to the Circle Zone!");
+        Sign rectangleSign = new Sign(rectangle, "Warning");
+
+
+        System.out.println("Displaying the Circle Sign:");
+        circleSign.displaySign();
+
+        System.out.println();
+
+        System.out.println("Displaying the Rectangle Sign:");
+        rectangleSign.displaySign();
+    }
+}
+
+interface Shape1 {
+    String getColor();
+
+    String getShapeInfo();
+
+
+    default void describeShape1() {
+        System.out.println("This is a " + getShapeInfo() + " with color " + getColor());
+    }
+}
+class Circle2 implements Shape1 {
+    private double radius1;
+    private String color2;
+
+    public Circle2(double radius, String color) {
+        this.radius1 = radius;
+        this.color2 = color;
+    }
+
+    @Override
+    public String getColor() {
+        return color2;
+    }
+
+    @Override
+    public String getShapeInfo() {
+        return "Circle with radius " + radius1;
+    }
+
+    public double getArea() {
+        return Math.PI * radius1 * radius1;
+    }
+}
+class Rectangle2 implements Shape1
+{
+    private double length1;
+    private double width1;
+    private String color1;
+
+    public Rectangle2(double length2, double width2, String color2) {
+        this.length1 = length2;
+        this.width1 = width2;
+        this.color1 = color2;
+    }
+
+    @Override
+    public String getColor() {
+        return color1;
+    }
+
+    @Override
+    public String getShapeInfo() {
+        return "Rectangle with length " + length1 + " and width " + width1;
+    }
+
+    public double getArea() {
+        return length1 * width1;
+    }
+}
+class Sign
+{
+    private Shape1 shape;
+    private String text;
+
+    public Sign(Shape1 shape, String text) {
+        this.shape = shape;
+        this.text = text;
+    }
+    public void displaySign() {
+        shape.describeShape1();
+        System.out.println("Sign Text: " + text);
+    }
+}
+
+
+
