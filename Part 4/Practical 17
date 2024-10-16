@@ -1,0 +1,25 @@
+public class p17
+{
+    public static void main(String args[])
+    {
+        Parent p1 = new Parent();
+        child c1  = new child();
+        p1.p_method();
+    }
+}
+class Parent
+{
+    void p_method()
+    {
+        System.out.println(" This is parent class method ");
+    }
+}
+
+class child extends Parent
+{
+    void c_method()
+    {
+        System.out.println(" This is Child class method");
+    }
+}
+
