@@ -1,0 +1,30 @@
+public class p35 extends Thread
+{
+    public static void main(String[] args)
+    {
+        thread4 t4 = new thread4();
+        t4.start();
+    }
+}
+class thread4 extends Thread
+{
+        int value = 0;
+
+        public void run()
+        {
+            while (true)
+            {
+                value++;
+                System.out.println("Value: " + value);
+
+                try
+                {
+                    Thread.sleep(1000);
+                }
+                catch (InterruptedException e)
+                {
+                    System.out.println(e);
+                }
+            }
+        }
+}
