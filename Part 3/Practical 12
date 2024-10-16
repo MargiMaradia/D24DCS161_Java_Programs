@@ -1,0 +1,15 @@
+import java.sql.SQLOutput;
+import java.util.*;
+public class p12
+{
+    public static void main(String arg[])
+    {
+                Scanner sc = new Scanner(System.in);
+                double c;
+                System.out.print(" enter the pound :");
+                c = sc.nextDouble();
+                double result;
+                result = c*100;
+                System.out.println(" the conversion from " + c + " pound to rupees : " +result);
+    }
+}
