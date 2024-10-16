@@ -1,0 +1,94 @@
+import java.util.*;
+public class p37
+{
+    public static void main(String[] args) throws InterruptedException
+    {
+
+                LinkedList<Integer> buffer = new LinkedList<>();
+                int capacity = 10;
+                Producer p = new Producer(buffer, capacity);
+                Consumer c = new Consumer(buffer);
+
+                Thread pThread = new Thread(p);
+                Thread cThread = new Thread(c);
+
+                pThread.start();
+                cThread.start();
+
+                pThread.join();
+                cThread.join();
+    }
+}
+
+class Producer implements Runnable
+{
+    LinkedList<Integer> list;
+    int capacity;
+
+    public Producer(LinkedList<Integer> list, int capacity)
+    {
+        this.list = list;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public void run()
+    {
+        int value = 0;
+        while (true)
+        {
+            try
+            {
+                synchronized (list)
+                {
+                    while (list.size() == capacity)
+                    {
+                        list.wait();
+                    }
+                    System.out.println("Producer produced: " + value);
+                    list.add(value++);
+                    list.notify();
+                }
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+class Consumer implements Runnable {
+    LinkedList<Integer> list;
+
+    public Consumer(LinkedList<Integer> list) {
+        this.list = list;
+    }
+
+    @Override
+    public void run()
+    {
+        while (true)
+        {
+            try
+            {
+                synchronized (list)
+                {
+                    while (list.size() == 0)
+                    {
+                        list.wait();
+                    }
+                    int value = list.removeFirst();
+                    System.out.println("Consumer consumed: " + value);
+                    list.notify();
+                }
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
+}
